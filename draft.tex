@@ -1,0 +1,53 @@
+\documentclass[11pt]{article}
+% Discuss:
+% * writing sample
+% ** Expanding longer proposal
+% ** Work out semantics
+% ** Work out syntax
+% * letters of rec
+
+\usepackage{silence}
+\WarningFilter{biblatex}{Patching footnotes failed}
+\usepackage[
+style=authoryear,
+natbib
+]{biblatex}
+\addbibresource{bibliography.bib}
+\setcounter{biburlnumpenalty}{6000}
+\setcounter{biburllcpenalty}{7000}
+\setcounter{biburlucpenalty}{8000}
+
+\usepackage{graphicx}
+\usepackage{caption} % More complex captioning
+\usepackage{subcaption} % subfigure environment and co.
+\usepackage{placeins} % \FloatBarrier flushes the float buffer
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{bbold}
+
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+\usepackage[linguistics]{forest}
+\usetikzlibrary{tikzmark}
+
+\usepackage[normalem]{ulem} % \sout strikethrough text
+
+\usepackage{gb4e}
+
+\newcommand{\ok}{\checkmark}
+\DeclareMathOperator{\bbexists}{\exists\mskip-7mu\exists}
+
+
+\title{Expletive \textit{There} Relative Clauses}
+\author{Benjamin Kyle Olson}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+
+%\begin{raggedright}
+%	\printbibliography
+%\end{raggedright}
+\end{document}
