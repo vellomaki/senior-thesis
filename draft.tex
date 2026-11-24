@@ -17,14 +17,39 @@ natbib
 \setcounter{biburllcpenalty}{7000}
 \setcounter{biburlucpenalty}{8000}
 
+%\usepackage{geometry}
+
 \usepackage{graphicx}
+\usepackage{hyperref}
+\hypersetup{
+  colorlinks=true,
+  citecolor=blue,
+  linkcolor=black,
+}
+
 \usepackage{caption} % More complex captioning
 \usepackage{subcaption} % subfigure environment and co.
 \usepackage{placeins} % \FloatBarrier flushes the float buffer
+\usepackage{enumitem}
+\newlist{resexe}{itemize}{3}
+\setlist[resexe]{
+  leftmargin=2\parindent,
+  labelsep=2ex
+}
 
 \usepackage{amsmath}
 \usepackage{amssymb}
-\usepackage{bbold}
+\usepackage{mathtools}
+\usepackage{stmaryrd}
+%\usepackage{bbold}
+
+\usepackage{amsthm}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+
+\newenvironment{argument}[1][]%
+  {\par\medskip\noindent\textbf{\textit{Argument. #1}}}
+  {\qed}
 
 \usepackage{tikz}
 \usetikzlibrary{positioning}
@@ -39,15 +64,369 @@ natbib
 \DeclareMathOperator{\bbexists}{\exists\mskip-7mu\exists}
 
 
-\title{Expletive \textit{There} Relative Clauses}
+\title{Expletive \textit{There} Relative Clauses and Novelty}
 \author{Benjamin Kyle Olson}
 \date{\today}
 
 \begin{document}
 \maketitle
 
+\section{Introduction}
+We consider expletive \textit{there} contexs (hereafter TCs) such as (\ref{ex:tc}).\footnote{This essay is part of an ongoing senior thesis, the latest version available at \url{https://github.com/vellomaki/senior-thesis}. My immense thanks to Jess H.K. Law for advising and steering me in this process.} Since \citet{milsarkExistentialSentencesEnglish1974}, there has been great development in their exploration (see \cite{mcnallyExistential2011} for a some 120 citation bibliography).
 
-%\begin{raggedright}
-%	\printbibliography
-%\end{raggedright}
+\begin{exe}
+	\ex {There will be a duck roasted on Arbor Day.\\
+		\null\hfill(\cite{milsarkExistentialSentencesEnglish1974}, ch. 1, ex. 12a)}\label{ex:tc}
+\end{exe}
+
+While, the present essay does make some limited claims on TCs, namely on their titular novelty, the present essay rather concerns a rich syntactic product: relative clauses out of TCs (TRCs) as in (\ref{ex:trc}). To my knowledge first considered in \citet{carlsonAmountRelatives1977}, the phenomenon of interest is syntactically typified by a relative clause (RC) formation with a gap in the postcopular DP position of a TC.
+
+\begin{exe}
+	\ex {The people there were at that time only lived a few decades.\\
+		\null\hfill(\cite{carlsonAmountRelatives1977}, ex. 10a)}\label{ex:trc}
+\end{exe}
+
+Even more narrowly, for reasons of space and time, we will only concern ourselves at present with TRCs' anti-indefiniteness effect: simply put, definite \textit{the} (\ref{ex:trc}) and even universal \textit{every} (\ref{ex:det:universal}) but not indefinite \textit{a} (\ref{ex:det:indefinite}) determiners may cooccur with TRCs.\footnote{Much of the discussion is on definite-indefinite contrasts with other determiners taken up towards the end of the essay.} Of course, such a restriction is simply not seen in ordinary restrictive relative clauses (\ref{ex:det:rrc}).
+
+\begin{exe}
+	\ex[] {Every lion there is eats meat.\hfill(\cite{carlsonAmountRelatives1977}, ex. 10e)}\label{ex:det:universal}
+	\ex[*] {A man there was disagreed.\hfill(\cite{carlsonAmountRelatives1977}, ex. 11b)}\label{ex:det:indefinite}
+	\ex[] {The/Every/A girl that climbed the tree proclaimed victory.}\label{ex:det:rrc}
+\end{exe}
+
+This anti-indefiniteness is particularly striking against the well-known anti-definiteness effect of TCs: indefinite \textit{a} (\ref{ex:tc}) but not/rarely definite \textit{the} (\ref{ex:de}) may occur in TCs.
+
+\begin{exe}
+	\ex[*] {There will be the duck roasted on Arbor Day.\footnote{Ignoring for the time so-called list readings.}\\
+		\null\hfill(\cite{milsarkExistentialSentencesEnglish1974}, ch. 1, ex. 12b)}\label{ex:de}
+\end{exe}
+
+I claim that TRCs' anti-indefiniteness is simply a product of conflicting novelty requirements between the head determiner and the TC. Meanwhile, definites and universals do not have novelty conditions and thus do not conflict.
+
+\subsection{Non-Issue: Amounts}
+As syntactically qualified, some TRCs admit amount readings wherein (\ref{ex:amount}) most saliently reads (\ref{ex:amount:head}):
+
+\begin{exe}
+	\ex {There isn't the water in the sink that there is in the bathtub.\\
+		\null\hfill(Lisa Selkirk, p.c. to Irene Heim; so cited in \cite{vonfintelAmountRelativesMeaning1999})}\label{ex:amount}
+	\ex {There isn't the amount of water in the sink that there is in the bathtub.}\label{ex:amount:head}
+\end{exe}
+
+I will pointedly ignore these cases\footnote{I will also briefly remark that \citet{carlsonAmountRelatives1977}'s two diagnostics other than anti-indefiniteness are a relativizer restriction (\textit{that}, null; never \textit{wh}-forms) and anti-stacking facts (TRCs may not stack with intersective import). I ignore them as beyond the present scope and I indpendently have tentative reason to believe something more complicated is going on.} as (i) I believe individually read TRCs should be schismed from amount relative analyses (see, the ongoing senior thesis) and (ii) out of an abundance of caution for what exactly might be going on in amount readings (see \cite{mendiaAmountRelativesRedux2017} for a thorough examination of RCs with amount readings in English and Spanish). In a sense, the thesis is a position against necessarily lumping TRCs with amount RCs in order to get the anti-indefiniteness, as has been historically appealed to (\cite{carlsonAmountRelatives1977, heimWhereDoesDefiniteness1987, grosuStrangeRelativesThird1998, grosuAmountRelatives2017}).
+
+\section{Novelty and Anti-Definiteness}
+To briefly recount, TCs are anti-definite in the sense that they exclude many definite and universal determiners while permiting many indefinite determiners. While accounts of these facts are about as wide-spread as theories of syntax-semantics, I will adopt some key points from \citet{mcnallyInterpretationEnglishExistential1992}.
+
+\begin{exe}
+	\ex {There is a/some/*the/*that/*every cat at the door.}
+	\ex {There are two/most/many/few/*all students in this class.}
+\end{exe}
+
+\begin{lemma}\label{lem:referent}
+	An expletive \textit{there} context introduces a discourse referent.
+\end{lemma}
+\begin{argument}
+	\textsc{Existential Quantification.} This is perhaps self-evident given classical interpretation of TCs translating (\ref{ex:if-cake}) into (\ref{ex:sem:if-cake})---it is the nature of the existential quantifier to introduce referents to the discourse.
+
+	\begin{exe}
+		\ex {\begin{xlist}
+				\ex {If there is a cake at the party, then I will go to the party}\label{ex:if-cake}
+				\ex {\((\exists x . \text{cake}(x) \land \text{at-the-party}(x)) \implies \text{go-to-the-party}(\text{I})\)}\label{ex:sem:if-cake}
+			\end{xlist}}
+	\end{exe}
+
+	\textsc{Other Determiners.} However, such straightforward translation is tenuous with many other felicitous determiners, especially proportionals like \textit{most}. This said, there is still an ``existential flavor'' to (\ref{ex:most}) in the sense that we are presented with \textit{most students} and told that they were in the auditorium.
+
+	\begin{exe}
+		\ex {There were most sudents in the auditorium.}\label{ex:most}
+	\end{exe}
+
+	\textsc{Context.} Put in a context, the referent introduction of TCs stands out: Say we are in the conspicuously cat-less garden. Should I spot a cat and wish to share it with you, (\ref{ex:there's-a-cat}) is a perfectly fine thing to say and certainly does introduce the cat referent to the discourse. The complete unremarkability of (\ref{ex:there's-a-cat}) in this pragmatic use is in fact remarkable against the fact that TCs are generally otherwise somewhat stunted and formal expressions.
+
+	\begin{exe}
+		\ex {There's a cat.}\label{ex:there's-a-cat}
+	\end{exe}
+
+	On the flip side, (\ref{ex:lap-cat}) is rather odd in a context whereby we are surrounded by cats such that, by Gricean Quantity, introducing a cat referent is pragmatically vacuous.
+
+	\begin{exe}
+		\ex {There's a cat on your lap.}\label{ex:lap-cat}
+	\end{exe}
+
+	\textsc{Negation.} Slight care should be taken with respect to negated TCs (\ref{ex:neg}). This, of course, entails that no such referent exists (\ref{ex:sem:neg}). I think we can in fact take this as positive evidence for discourse introduction of the TC itself: observe that the appropriate truth conditions (or ones directly entailed anyhow) explicitly negate the introduction of a referent; since this negation is clearly provided by the morphological \textit{n't}, the negated introduction must be a property of the TC itself.
+
+	\begin{exe}
+		\ex {\begin{xlist}
+				\ex {There wasn't a sound.\hfill(\cite{mcnallyInterpretationEnglishExistential1992}, ex. 192)}\label{ex:neg}
+				\ex {\(\lnot \exists x . \text{sound}(x) \equiv \forall x . \lnot \text{sound}(x)\)}\label{ex:sem:neg}
+			\end{xlist}}
+	\end{exe}
+\end{argument}
+
+\begin{lemma}\label{lem:novel}
+	The discourse referent introduced by an expletive \textit{there} context is novel.
+\end{lemma}
+\begin{argument}
+	\textsc{Anti-Familiarity.} We may observe following \citet{heimSemanticsDefiniteIndefinite1982} that definites have a familiarity condition which may rather minimally contrast definites from indefinites (\ref{ex:familiarity}). This thus requires TCs' anti-definiteness to be \textit{because} of a conflict with this familiarity condition. That is, TCs are anti-familiar. Or rather, novel.
+
+	\begin{exe}
+		\ex {A cat_i is in the garden. John likes the cat_i, and Mary hates a cat_j.\\
+			(*i=j)\hfill(Adapted from \cite{heimSemanticsDefiniteIndefinite1982}, p. 101, ex. 13)}\label{ex:familiarity}
+	\end{exe}
+
+	I will take up further the exact nature of the relationship between novelty and familiarity in the next section. For now, note that the logic goes: (i) Definites are familiar/anti-novel. (ii) Indefinites are novel/anti-familiar. (iii) Definites and indefinites are identical except with respect to novelty/familiarity. (iv) Indefinites, but not definites, are allowed in construction \(R\). (v) Thus, \(R\) conflicts with the familiarity of definites. (vi) Therefore, \(R\) is anti-familiar. (vii) Novelty is at least as strong a condition as anti-familiarity. (viii) \textit{Ceteris paribus}, a stronger condition is more falsifiable. (ix) Metatheoretically, \textit{ceteris paribus}, more falsifiable theories are preferable. (x) Hence, the stronger of two conditions is prefered. (xi) This means (vii) entails that novelty is prefered over anti-familiarity. (xii) Then, we strengthen (vi) to the statement that \(R\) is novel. (xiii) That is, it is a valid rule of inference that, if construction \(R\) allows indefinites but not definites, then \(R\) is novel. (xiv) TCs allow indefinites but not definites, therefore TCs are novel by (xiii).
+
+	\textsc{Novelty in \textsl{there}.} It seems reasonable to attribute this novelty to \textit{there} as, beyond copulative expletive \textit{there} sentences, verbal expletive \textit{there} sentences disallow definites and seem to have a novelty effect by the above argumentation as they allow indefinites but not definties. Moreover, the first class \textit{arrive}, \textit{exists}, \textit{begin}, etc. are rather directly presenting the new DP into the discourse; but even stationary verbals \textit{stood}, \textit{hang}, etc. have a very ``stage presentation'' air about them.
+
+	\begin{exe}
+		\ex {\begin{xlist}
+				\ex {There is a/*the man at the door.}
+				\ex {There arrived a/*the man at the door.}
+				\ex {There stood a/*the man at the door.}
+				\ex {There walked a/*the man to the door.}
+			\end{xlist}}
+	\end{exe}
+
+	Finally, two indirect arguments providing some weak evidence:
+
+	\textsc{Context.} Let us return to being surrounded by cats. Another way to view the pragmatic failure of the attempted discourse introduction is that whatever cat it is meant to introduce is certainly not novel, thus the crashing of Gricean Quantity indicates novelty within the original utterance of \textit{There's a cat on your lap}.
+
+	\textsc{Sufficiency.} As for the converse of the lemma, \textit{a priori}, it is clear that discourse introduction is a necessary condition for novelty: one cannot be new without being introduced.
+\end{argument}
+
+\section{Anti-Indefiniteness and Familiarity}
+Recall from above the validity of the statement that if a structure \(R\) allows indefinites but not definites, then \(R\) is novel. It should be immediately clear that the converse holds too: if \(R\) is novel, then it will allow indefinites but not definites. This is in stark contrast to the observed anti-indefiniteness of TRCs: were TRCs novel, they should permit indefinites and prejudice definites, contra to the facts. Of course, the contrapositive to the above converse is that anti-indefiniteness implies anti-novelty, which we metatheoretically strengthen to familiarity. That is, TRCs should be familiar. Except, it seems we might further embed a TRC in another TC: (\ref{ex:tc-trc}) is substantially better than an oridinary definite in a TC.
+
+\begin{exe}
+	\ex {The/*A man that there was here disagreed.}\label{ex:trc:def}
+	\ex {There's the man there was in the garden now in the office.}\label{ex:tc-trc}
+\end{exe}
+
+Do we simply abandon familiarity and novelty? I claim no, and rather point out to the grey-zone created within our meta-theoretical strengthenings. Let us explore more carefully what is going on in (\ref{ex:tc-trc}) by following the development of discourse and knowledge in context:
+
+\subsection{Prelude}
+One may note that Heim shifts definites' commonly attested uniqueness (\(\forall y . P(y) \to y=x\)) to familiarity on point that uniqueness is not actually necessary for definites: in the context of being surrounded by our cats, so long as there is a uniquely ``salient'', ``most likely'', or ``relevant'' (or something along that sense) cat, definites may be produced:
+
+\begin{exe}
+	\ex {The cat has a hat.}
+\end{exe}
+
+\subsection{As Mentioned TRCs}\label{sec:as-mentioned}
+We pointed out above that TCs introduce referents. Let us return to the garden, perhaps now as a brief stroll during a party. Should I (but not you) spot a suspicious man in all black \(B\) in the otherwise uninhabited garden I may completely inoccuous remark (\ref{ex:unremarkable}). However, (\ref{ex:gun}) would be a presently strange utterance (even if he indeed had an obvious gun). What is interesting for the present purposes is that the TRC (\ref{ex:gun}) is unacceptable both as an out-of-the-blue statement and as a follow-up to (\ref{ex:unremarkable}). In the former, it seems the familiarity of definites is not observe while in the latter, novelty of TCs goes awry.
+
+\begin{exe}
+	\ex {There's a man here in the garden.}\label{ex:unremarkable}
+	\ex {The man there is in the garden has a gun.}\label{ex:gun}
+\end{exe}
+
+\subsection{Some Time Later}\label{sec:recall}
+Let us fix my uttering  (\ref{ex:unremarkable}) in the past. Perhaps we run into a few other male party-goers in the garden on our way back such that (\ref{ex:the-man-was-in-the-garden}) is completely unacceptable as there is not even a ``most likely'' unique referent. Note too (\ref{ex:the-man-in-the-garden-had-a-gun}) is unacceptable. Any familiarity should be lost.
+
+\begin{exe}
+	\ex {The man was in the garden.}\label{ex:the-man-was-in-the-garden}
+	\ex {The man in the garden had a gun.}\label{ex:the-man-in-the-garden-had-a-gun}
+\end{exe}
+
+However, I might remark (\ref{ex:trc-gun}). Let me take a moment to remark: this inocculaity is actually rather astounding. The keen reader following along with their own judgements may note that TRCs are generally strange utterances, especially out-of-the-blue, with their non-\textit{there} cousins (ie. ordinary restrictive RCs) or even just a plain prepositional phrase (PP) being generally prefered. However, presently is a context wherein the TRC (\ref{ex:trc-gun}) is in fact better than the alternative PP (\ref{ex:the-man-in-the-garden-had-a-gun}).
+
+Now, how is this now acceptable whereas that man in black \(B\) was unfamiliar just a moment ago? This is where the considerations of dynamic semantics and the development of intra-sentential discourse come into play: I claim that before the utterance of (\ref{ex:trc-gun}), \(B\) is truly unfamiliar, however he is in the common ground by virtue of my earlier remark (\ref{ex:unremarkable}). This non-familiarity passes the novelty conditions of the embedded TC and thus \(B\) is introduced to the discourse. Having just been (re-)introduced, \(B\) is sufficiently familiar to pass definiteness.
+
+\begin{exe}
+	\ex {The man there was in the garden had a gun.}\label{ex:trc-gun}
+\end{exe}
+
+It should be noted that (\ref{ex:trc-gun}) cannot refer to any absolutely novel (i.e. unknown by you) referent,\footnote{Well, (\ref{ex:trc-gun}) could be uttered out-of-the-blue but it would require accomadation. Various responses are felicitous: \textit{There was a man in the garden?} or \textit{Which man?}} I think this has to do with the fact that RCs generally have intersective import, and should you not know of \(B\), the adjoined RC that is the TRC results in the empty set, which are generally recognized as \textit{non sequiters} in a compositional semantics.
+
+For completeness, do note that TCs can independently pick up known entities. Say we didn't run into any men on the way back, (\ref{ex:tc-question}) clearly is in reference to the remarked \(B\).
+
+\begin{exe}
+	\ex {There was a man in the garden, right?}\label{ex:tc-question}
+\end{exe}
+
+\subsection{The Extent of Novelty}\label{sec:novelty}
+Finally, let us return to TRCs embedded in other TCs: Again, let me have remarked (\ref{ex:unremarkable}). Should I go on to spot that man in black \(B\) in the office, I might inform you:
+
+\begin{exe}
+	\ex {There's the man there was in the garden now in the office.}\label{ex:tc-embedded-trc}
+\end{exe}
+
+Now, just above, we argued that the definite is licensed by referent introduction from the embedded TC making \(B\) sufficiently familiar. Yet we argued around Lemma~\ref{lem:novel} that definiteness-familiarity directly conflicts with TC-novelty thereby yielding TCs' definiteness facts. The puzzle is clear: How is \(B\) made familiar/non-novel enough to license the definite yet novel/non-familiar enough to license the TC? I claim that it is precisely as claimed: \(B\) is non-familiar and non-novel, existing in a grey-zone of familiarity-novelty. Or rather, \(B\) is perfectly familiar, thereby licensing the definite; but completely novel \textit{in so far as the discourse restriction of the coda `in the office' is concerned}.
+
+The discourse-restrictive import of the TC-coda is rather convincingly argued in \citet{zucchiIngredientsDefinitenessDefiniteness1995}. And indeed, TC-novelty is mediated by the coda: \(i\) and \(j\) in (\ref{ex:coda-reference}) may corefer (if not formally coindex) despite the particular referent being non-novel. Meanwhile, it is odd for them to corefer in (\ref{ex:coda-conflict}). Assuming the coda mediates novelty---i.e. the domain of the anti-familiarity of TCs is determined by the coda---these facts and the original TC-embedded TRC are directly predicted: the referents they introduce are not known to be within the domain of the coda and hence are sufficiently novel to be licensed in the TC.
+
+\begin{exe}
+	\ex {\textit{Context: A man_i was in the garden.}\\
+		There is (now) a man_j in the office.}\label{ex:coda-reference}
+	\ex {\textit{Context: A man_i walked into the office.}\\
+		There is (now) a man_j in the office.}\label{ex:coda-conflict}
+\end{exe}
+
+\subsection{Viz. List Existentials}\label{sec:list}
+\citet{mcnallyInterpretationEnglishExistential1992} in her Chapter~5 argues that TCs' novelty (or rather referent introduction for her) can be ``turned off'' as it were just in case it is ``presupposed to be true in the context in which it is uttered'' (her ex. 327). This serves to explain so-called list-existentials (\ref{ex:list}).
+
+\begin{exe}
+	\ex {(\cite{mcnallyInterpretationEnglishExistential1992}, ex. 322)
+		\begin{xlist}
+			\ex {Who  is there available to fix the computer?}
+			\ex {Well, there's Alice.}
+		\end{xlist}}\label{ex:list}
+\end{exe}
+
+I do not think such an analysis will suffice for explaining TRCs and even TC-embedded TRCs. First, the TC-embdded TRC (\ref{ex:tc-embedded-trc}) does not apparently read as a list-existential. It is an assertion of \(B\)'s new location, not a sublist of, say, (\ref{ex:sublist}).
+
+\begin{resexe}
+	\item[\textit{Context.}] I remarked \textit{there is a man in the garden} earlier, we have since seen several men in the garden, that remarked man is now in the office.
+	\item[(\ref{ex:tc-embedded-trc})] There's the man there was in the garden now in the office.
+\end{resexe}
+
+\begin{exe}
+	\ex {Well, there's the man there was in the garden, Alice, and Bob in the office.}\label{ex:sublist}
+\end{exe}
+
+Second, allowing TC-novelty to be simply ignored would incorrectly predict that (\ref{ex:trc-gun}) could, and in fact should, refer to (any of) the most recently encountered man: (i) By way of contradiction, assume the TC of (\ref{ex:trc-gun}) does not have the novelty effect. (ii) The most recently met man is uniquely ``most likely.'' (iii) Familiarity of the definite requires reference to the uniquely ``most likely'' man. (iv) Thus, the definite refers to the most recelty met man. (iv) This is not seen, \textit{reductio ad absurdum}. Moreover, (v) the remarked \(B\) is not familiar. (vi) Therefore, familiarity of the definite precludes reference to non-familiar \(B\). (vii) However, \(B\) is referred to, a contradiction. (viii) Hence, (i) is false. (ix) That is, the TC of (\ref{ex:trc-gun}) is novel.
+
+\begin{resexe}
+	\item[\textit{Context.}] I remarked \textit{there is a man here in the garden} earlier and we have since seen several men in the garden.
+	\item[(\ref{ex:trc-gun})] The man there was in the garden had a gun.
+\end{resexe}
+
+Third, by a similar reasoning as above, should TC-referent introduction instead be ignored (or, indeed, both) we see that the the recollective TRC (\ref{ex:trc-gun}) should be infelicitous as the definite fails fimiliarity: \(B\) is novel and thus not familiar, the determiner cannot pass familiarity if \(B\) is not further introduced into the discourse.
+
+Finally, we principally \textit{could} excuse the TC-embedded TRC (\ref{ex:tc-embedded-trc}) by ignoring novelty (referent introduction is somewhat irrelevant here) in the matrix. However, this seems to predict it to have a list-reading, which again, it does as by the first point above.
+
+\subsection{Interim Summary}
+We have seen a number of facts about TCs and TRCs:
+
+\begin{enumerate}[label=(\roman*)]
+	\item TCs introduce a discourse referent (Lemma~\ref{lem:referent}).
+	\item That discourse referent is novel, possibly as the meaning of expletive \textit{there} (Lemma~\ref{lem:novel}).
+	\item Indefinites have a novelty condition.
+	\item Definites have a familiarity condition, rather than the traditional strict uniqueness.
+	\item TC-novelty and definite-familiarity are closely related so as to yield TCs' definiteness facts.
+	\item Despite their TC embedded content, TRCs cannot introduce novel referents out-of-the-blue \S\ref{sec:as-mentioned} (\ref{ex:gun}).
+	\item TRCs cannot immediately resume a referent, indicating TC-novelty is still at issue \S\ref{sec:as-mentioned} (\ref{ex:gun}).
+	\item TRCs can recall non-familiar referents \S\ref{sec:recall} (\ref{ex:trc-gun}).\label{sum:novel-recall}
+	\item Indeed TCs can recall known, non-familiar referents \S\ref{sec:recall} (\ref{ex:trc-gun}).
+	\item TC-novelty is mediated by the domain of the coda \S\ref{sec:novelty} (\ref{ex:coda-reference}-\ref{ex:coda-conflict}).
+	\item This domain mediation allows TRCs to embed in TCs with disjoint codas \S\ref{sec:novelty} (\ref{ex:tc-embedded-trc}).
+	\item TRCs (embedded or not) should not appeal to an analysis whereby novelty and/or referent introduction are ignored.
+\end{enumerate}
+
+Our account noted in \S\ref{sec:recall} of the felicity of definites with TRCs is exactly that the TRC recalls a non-familiar referent by \ref{sum:novel-recall}. This raises the referent to be sufficiently familiar for the definite. It is clear then that the novelty effect of indefinites conflicts with the novelty from the embedded TC thereby yielding TRCs' anti-indefiniteness.
+
+In the next section I will sketch two formalisms to the facts within a dynamic semantics. We conclude in \S\ref{sec:determiners} by accounting for the other determiner selections.
+
+\section{Formalism}
+% TODO: how do I say "this is very handwave-y bc I don't really know what I'm doing and don't have the time to fix it"?
+As I see it, there are two basic analyses of the facts, both in the tradition of dynamic semantics: existential disclosure along the lines of \citet{dekkerExistentialDisclosure1993} or referent book-keeping along the lines of \citet{mcnallyInterpretationEnglishExistential1992}.
+
+\subsection{Existential Disclosure}
+First, perhaps the more traditionally familiar analysis is by existential disclosure. The key assertion here is that
+
+\begin{lemma}
+	Relative clauses out of expletive \textit{there} contexts undergo extential disclosure. That is, the following equivalence is valid of relativization operations:
+	\begin{equation}
+		\lambda_x(\exists x . \phi) \equiv \lambda y. \exists x . \phi \land x = y
+	\end{equation}
+\end{lemma}
+
+\begin{argument}
+	Such, or something along this line, is the central thesis of \citet{dekkerExistentialDisclosure1993}. Moreover, such has been independently implicitly assumed by \citet{grosuStrangeRelativesThird1998, grosuAmountRelatives2017}. Regardless, any analysis giving existential import (\(\exists x . \phi\)) to TRCs---which McNally acknowledges is a necessary and sufficient condition even under her analysis---must contend with the fact that that very \(x\) \textit{does} need to be made available to the interepretation of the matrix. By any means, this is the core tenet of existential disclosure.
+\end{argument}
+
+I assume a TC will essentially be analyzed as (\ref{sem:tc-semantics}). \(\operatorname{NOVEL}\) is defined as (\ref{sem:novel}).
+\begin{exe}
+	\ex {\(\exists x [P(x) \land \operatorname{NOVEL}_X(x)]\)}\label{sem:tc-semantics}
+	\ex {\(\operatorname{NOVEL}_X(x) \equiv x \not\in D(c + X)\) where \(X\) is the semantic content of the coda and \(D(c + X)\) is the dynamically constructed domain of entities from the coda \(X\) adjoined to the context \(c\).}\label{sem:novel}
+\end{exe}
+
+The relationship between relative clause gaps and their head nouns is rather tricky (see, e.g., \cite{bhattRaisingAnalysisRelative2002, cinqueSyntaxRelativeClauses2020} for discussion), for simplicity and concreteness, I will assume the head noun reconstructs; though various forms of a non-reconstructive syntax should be workable too.
+
+\begin{exe}
+	\ex {The man there was in the garden had a flower.}
+	\ex {\textit{Semantic calculus:}
+		\begin{align*}
+			 & \iota y [\lambda_x(\exists x [\operatorname{NOVEL}_G(x) \land M(x)])(y) \land F(y)]                                                             \\
+			 & \equiv \iota y [(\lambda x'.\exists x [\operatorname{NOVEL}_G(x) \land M(x) \land x = x'])(y) \land F(y)]\tag*{(\text{existential disclosure})} \\
+			 & \equiv \iota y [(\exists x [\operatorname{NOVEL}_G(x) \land M(x) \land x = y]) \land F(y)] \tag*{(\text{lambda reduction})}                     \\
+			 & \equiv \iota y [\operatorname{NOVEL}_G(y) \land M(y) \land F(y)] \tag*{(\text{classical inference})}
+		\end{align*}
+		where \(\iota\) is whatever definiteness operation binds \(y\) by familiarity.
+	}
+\end{exe}
+
+Note that the definite's familiarity is satisfied either at the LF input (the first line above) by the existential or at around the point of existential disclosure---perhaps we can say that the \textit{need} for existential disclosure is to provide familiarity to the definite. Regardless, it is clear the semantics (\ref{sem:tc-embedded-trc}) for the TC-embedded TRC will work out and matrix TC-novelty is satisfied by virtue of that garden man not being known to be in the office.
+
+\begin{exe}
+	\ex {There is the man there was in the garden now in the office.}
+	\ex {\(\exists y [\operatorname{NOVEL}_O(y) \land \lambda_x(\exists x [\operatorname{NOVEL}_G(x) \land M(x)])(y)]\)}\label{sem:tc-embedded-trc}
+\end{exe}
+
+\subsection{Referent Book-Keeping}
+\citet{mcnallyInterpretationEnglishExistential1992} present a dynamic semantics of TCs whereby discourse referent introduction is (merely/strongly) a presupposition. She analyzes the core assertion of TCs to be that a property \(be_{exist}\) of the postcopular DP (i.e. \textit{man} in the running examples) is that it has a nonempty extension. Of course, this is the case if and only if there exists a referent \(y\) such that \(y\) is in said extension. Then, she argues, novelty is provided by \textit{there} in the form \(y \not\in D(c)\) where \(D(c)\) is the domain of entities in the context. Finally, if I am reading her analysis of the coda correctly, the domain of discourse \(D(c)\) has been sufficiently updated by the coda to align with how we have considered TC-novelty to apply above.
+
+While I do not at this time wish to adopt McNally's entire analysis, I will run with a few points:
+\begin{enumerate}[label=(\roman*)]
+	\item TCs introduce a referent to the contextual domain of discourse \(D(c)\)
+	\item TCs minimally entail \(\exists x \in D(c) \cup \{x\} [X(x) \land P(x)]\) where \(X\) is the interpretation of the coda and \(P\) is the interpretation of the postcopular sortal.
+	\item A TC updates the contextual domain of discourse \(D(c)\) so as to familiarize all \(X\) in \(D(c)\) by the time the process reaches novelty/\textit{there}.
+	\item Novelty is understood as the condition \(x \not\in D(c)\) (equivalently \(x \not\in D(c' + X)\) in the presence of a coda, where \(c'\) is the context before interpreting the TC).
+\end{enumerate}
+
+As with existenttial disclosure, the analysis should be adaptable to either a reconstructionist or non-reconstructionist analysis of RCs, but I will assume reconstruction for simplicity and concreteness.
+
+\subsubsection{Dynamic Predicate Logic}
+I roughly follow the dynamic predicate logic (DPL) outlined \citet{nouwenDynamicSemantics2022} and \citet{groenendijkDynamicPredicateLogic1991} with a slight caveat, I assume with McNally that calculations make reference to only the \textit{relevant} domain of individuals \(D^\alpha\) rather than the entire domain. Let \(D\) be an arbitrary set/the domain of individuals, with \(D^* \coloneqq \bigcup_{i \in \mathbb{N}} D^i\) (\(A^0 \coloneqq \{\emptyset\}\)); \(I^n\) be the set of \(n\)-ary predicates (\(n \in \mathbb{N}\))\footnote{Here, I consider constants to be nullary predicates.}; \(F : I^* \to D^*\) an (predicate) interpretation function such that \(F(I^0) \subseteq D\) and \(F(I^n) \subseteq \mathcal{P}(D^n)\)\footnote{Where \(\mathcal{P}(A)\) denotes the power set of a set \(A\).} (\(n \ge 1\)), though I will often just identify a predicate \(P\) with its mapping \(F(P)\) under \(F\); \(\Sigma\) be an arbitrary set/the set of variables; and, \(\mathcal{G} : \Sigma \to D\), I will often abbreviate \(\langle g(t_{1}), \dots, g(t_n)\rangle = g(\vec{t})\) for some \(g \in \mathcal{G}\). Define a model \(\mathcal{M} = \langle D, F \rangle\) and a (formula) interpretation function \(\llbracket \cdot \rrbracket_M \subseteq \mathcal{G} \times \mathcal{G}\) (suppressing the subscript where unambiguous; see \cite{groenendijkDynamicPredicateLogic1991} for details) which I often write in relation-notation \(\alpha\llbracket\cdot\rrbracket\beta\) following \citeauthor{nouwenDynamicSemantics2022}. Further, \(\alpha \models \phi \coloneqq \exists \beta . \alpha\llbracket\phi\rrbracket\beta\)\footnote{I will use dot notation (\(.\)) to quantifier scope to avoid excesses of brackets. I also ellide a great many parenthesis where appropriate scope is clear.} defines truth of \(\phi\) relative to \(\alpha \in \mathcal{G}\) (and model \(\mathcal{M}\)).
+
+We can define the relevant domain of individuals
+\[D^\alpha = \alpha(\Sigma) \coloneqq \{x \in D | \exists s \in \Sigma . \alpha(s) = x\}.\]
+
+Finally, I define the novelty predicate \(\alpha\llbracket\nu x\rrbracket\beta \coloneqq \alpha[x]\beta \land \beta(x) \not\in D^\alpha\). I will address familiarity in \S\ref{sec:familiarity}.
+
+\subsubsection{Interpreting TC Novelty}
+It should be clear from our above discussion that the appropriate interpretation, with respect to an assignment function \(g \in \mathcal{G}\), of TCs with novelty to be equivalent to
+\begin{exe}
+	\ex {\(\exists x . g(x) \not\in D(c) \cap X \land X(g(x)) \land P(g(x)),\)}\label{sem:tc-novelty}
+\end{exe}
+where \(D(c)\) is the contextual domain. This is equivalent to
+\begin{align*}
+	 & g \models \nu x \cdot X x \cdot P x                                                                                                        \\
+	 & \equiv \exists g' . g \llbracket\nu x \cdot X x \cdot P x\rrbracket g'                                                                     \\
+	 & \equiv \exists g'\alpha\beta . g \llbracket\nu x\rrbracket\alpha\llbracket X x\rrbracket\beta\llbracket P x\rrbracket g'                   \\
+	 & \equiv \exists g'\alpha\beta . g[x]\alpha \land \alpha x \not\in g(\Sigma) \land \alpha = \beta \land X\beta x \land \beta = g' \land Pg'x \\
+	 & \equiv \exists g' . g[x]g' \land g'x \not\in g(\Sigma) \land Xg'x \land Pg'x                                                               \\
+	 & \equiv \exists g' . (g[x]g' \land g'x \not\in g(\Sigma) \land Xg'x \land Pg'x) \lor \bot                                                   \\
+	\begin{split}
+		 & \equiv \exists g' . [(g[x]g' \land g'x \not\in g(\Sigma) \land Xg'x \land Pg'x)                             \\
+		 & \qquad\lor (g[x]g' \land \underbrace{g'x \not\in g(\Sigma) \land g'x \not\in X}_\bot \land Xg'x \land Pg'x)
+	\end{split}                                \\
+	 & \equiv \exists g' . g[x]g' \land (g'x \not\in g(\Sigma) \lor  g'x \not\in X) \land Xg'x \land Pg'x                                         \\
+	 & \equiv \exists g' . g\llbracket\exists x\rrbracket g' \land g'x \not\in g(\Sigma) \cap X \land Xg'x \land Pg'x                             \\
+\end{align*}
+
+It should be clear that this is equivalent to (\ref{sem:novel}) once converted back to classical logic, where \(D(c) = g(\Sigma)\).
+
+\subsubsection{Familiarity}\label{sec:familiarity}
+One should recall from \S\ref{sec:recall} that the TC in (\ref{ex:gun}) cannot introduce a completely novel referent, but (\ref{ex:trc-gun}) can recall that referent \(B\). How is this supposed to work? I previously claimed that \(B\) is unfamiliar but in the common ground in (\ref{ex:trc-gun}) thereby licensing the reference. Let me make that sense more precise.
+
+\begin{itemize}
+	\item[(\ref{ex:gun})] The man there is in the garden has a gun.
+	\item[(\ref{ex:trc-gun})] The man there was in the garden had a gun.
+\end{itemize}
+
+I maintain that novelty is computed with respect to the relevant domain of individuals
+\[\alpha\llbracket \nu x \rrbracket\beta \coloneqq \alpha[x]\beta \land \beta(x) \not\in D^\alpha.\]
+However, I will updated the familiarity predicate to reference the entire history \(\mathcal{H}\) of interpretation functions: Minimally, \(\mathcal{H}\) should include those minimal \(g \in \mathcal{G}\) which are a/the result of interpreting a discourse. A discourse \(\phi\) is minimally an utterance, e.g. (\ref{ex:unremarkable}) \textit{There's a man here in the garden.} For minimality, we may define a partial order on \(\mathcal{G}\) by \(D\)-containment \(\subseteq\): \(\alpha < \beta\) iff \(D^\alpha \subseteq D^\beta\). Therefore, we say that \(g \in \mathcal{G}\) is \textit{minimal} on \(A \subseteq \mathcal{G}\) iff \(g \in \inf A\).
+
+Thus, taking \(\phi\) to be the discourse of (\ref{ex:unremarkable}) (or its LF anyhow), those minimal \(g \in \mathcal{G}\) such that \(g \models \nu x \cdot \text{here-in-the-garden}\,x \cdot \text{man}\,x\) are members of \(g \in \mathcal{H}\).\footnote{This waffling is a necessary condition on \(\mathcal{H}\), presumably many more assignment functions are in \(\mathcal{H}\) from sub-discourse levels.} By minimality, the image \(g(\Sigma)\) of such a \(g\) will be just that individual introduced by \(\phi\) (and any in preceeding context).
+
+Now, we define familiarity with respect to \(\mathcal{H}\) as so:
+\[\alpha\llbracket!x\rrbracket\beta \coloneqq \exists \gamma \in \mathcal{H} . \beta(x) \in D^\gamma \cup D^\alpha.\]
+
+
+\section{Other Determiners}\label{sec:determiners}
+
+\begin{raggedright}
+	\printbibliography
+\end{raggedright}
 \end{document}
