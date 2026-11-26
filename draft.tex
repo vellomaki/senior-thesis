@@ -1,10 +1,4 @@
 \documentclass[11pt]{article}
-% Discuss:
-% * writing sample
-% ** Expanding longer proposal
-% ** Work out semantics
-% ** Work out syntax
-% * letters of rec
 
 \usepackage{silence}
 \WarningFilter{biblatex}{Patching footnotes failed}
@@ -51,13 +45,7 @@ natbib
   {\par\medskip\noindent\textbf{\textit{Argument. #1}}}
   {\qed}
 \usepackage{graphicx}
-\usepackage{caption} % More complex captioning
-\usepackage{subcaption} % subfigure environment and co.
 \usepackage{placeins} % \FloatBarrier flushes the float buffer
-
-\usepackage{amsmath}
-\usepackage{amssymb}
-\usepackage{bbold}
 
 \usepackage{tikz}
 \usetikzlibrary{positioning}
@@ -148,7 +136,13 @@ Our account of the definite-indefinite contrast above will be essentially that o
 	\ex {\textit{TC-Novelty:} The index \(i\) of the postcopula DP position must not be part of the contextual domain of discourse \(D(c)\): \(i \not\in D(c)\).}\label{rl:tc-novelty}
 \end{exe}
 
-This rather directly relates to \citet[p.~100]{heimSemanticsDefiniteIndefinite1982}'s Novelty Condition on indefinites that the index of an indefinite must be ``novel'' (not on any DP to its left). Thus, TCs naturally permit indefinites.
+This rather directly relates to \citet[p.~100]{heimSemanticsDefiniteIndefinite1982}'s Novelty Condition on indefinites that the index of an indefinite must be ``novel'' (not on any DP to its left) on the basis of data like (\ref{ex:indef-novelty}). Thus, TCs naturally permit indefinites.
+
+\begin{exe}
+	\ex {A cat_i is in the garden. John likes the cat_i, and Mary hates a cat_j.\\
+		(*i=j)\hfill(Adapted from \cite[p.~101, ex.~13]{heimSemanticsDefiniteIndefinite1982})}\label{ex:indef-novelty}
+\end{exe}
+% Note that the logic goes: (i) Definites are familiar/anti-novel. (ii) Indefinites are novel/anti-familiar. (iii) Definites and indefinites are identical except with respect to novelty/familiarity. (iv) Indefinites, but not definites, are allowed in construction \(R\). (v) Thus, \(R\) conflicts with the familiarity of definites. (vi) Therefore, \(R\) is anti-familiar. (vii) Novelty is at least as strong a condition as anti-familiarity. (viii) \textit{Ceteris paribus}, a stronger condition is more falsifiable. (ix) Metatheoretically, \textit{ceteris paribus}, more falsifiable theories are preferable. (x) Hence, the stronger of two conditions is prefered. (xi) This means (vii) entails that novelty is prefered over anti-familiarity. (xii) Then, we strengthen (vi) to the statement that \(R\) is novel. (xiii) That is, it is a valid rule of inference that, if construction \(R\) allows indefinites but not definites, then \(R\) is novel. (xiv) TCs allow indefinites but not definites, therefore TCs are novel by (xiii).
 
 Meanwhile, again with Heim, definites have a familiarity condition. This minimally entails (\ref{rl:index-familiartiy}) (I show in \S\ref{sec:formalism} this is actually vacuous at the level of property interpretation and thus take up a different understanding of familiarity). Thus, TCs cannot (generally) take definite DPs. Ergo, the anti-definiteness effect observed.
 
@@ -157,7 +151,7 @@ Meanwhile, again with Heim, definites have a familiarity condition. This minimal
 \end{exe}
 
 \subsection{Discourse Introduction and the Function of TCs}
-I wish to briefly remark on the discourse introduction properties of TCs; though with exception to a final piece of evidence, its frankly derivative of much of the literature. The astute reader following along with their own judgements will observe that TCs are generally stunted and formal expressions. However, they need not be; in fact, they are at their most natural when introducing what I think are indices to the discourse. Under the context (\ref{context:catless-garden}), (\ref{ex:introducing-cat}) is completely unremarkable and properly introduce the cat (or at least its existence).
+I wish to not-so-briefly remark on the discourse introduction properties of TCs; though with exception to a final piece of evidence, its frankly derivative of much of the literature. The astute reader following along with their own judgements will observe that TCs are generally stunted and formal expressions. However, they need not be; in fact, they are at their most natural when introducing what I think are indices to the discourse. Under the context (\ref{context:catless-garden}), (\ref{ex:introducing-cat}) is completely unremarkable and properly introduce the cat (or at least its existence).
 
 \begin{exe}
 	\ex {\textit{Context: We are in the garden and neither of us are aware of any cats being in the garden. I spot a cat.}}\label{context:catless-garden}
@@ -171,7 +165,7 @@ Of course, any claim of discourse introduction seems open to counterexamples via
 	\ex {\(\lnot \exists x . \text{sound}\,x\)}
 \end{exe}
 
-We should be somewhat careful as to whether TCs themselves (i.e. \textit{there}, \textit{be}, or a combination) induce any introduction or if it's simply the well-licensed indefinite.
+We should be somewhat careful as to whether TCs themselves (i.e. \textit{there}, \textit{be}, or a combination) induce any introduction or if it's simply the well-licensed indefinite. However, playing agnostic to any entity introduction, we see below that index-novelty is maintained in definites:
 
 Rather strongly challenging the idea that the \textit{only} function of TCs is entity introduction, \citet{abbottDefinitenessExistentials1997} illustrates a few examples employing deictics and definites plainly appearing in TCs:
 
@@ -200,94 +194,25 @@ We see here the direct influence of changing salience, with no change to actual 
 
 Meanwhile, in (B), the salience of \(C\) being right next to both me and my dad would place it in the common ground with an indexical. Thus, (\ref{ex:car:there}) fails novelty and familiarity in (\ref{ex:car:question}) is well-supported.
 
+\subsection{Recap}
+We saw that TCs along with indefinites carry an index-novelty condition (\(i \not\in D(c)\)) along the lines of \citet{heimSemanticsDefiniteIndefinite1982, mcnallyInterpretationEnglishExistential1992}. As by \citet{abbottDefinitenessExistentials1997}, any novelty of TCs should \textit{not} be understood in terms of referred-entity novelty. Meanwhile, definites carry some kind of familiarity condition. If familiarity at least entails non-index-novelty (\(i \in D(c)\)), then we have a natural account for why indefinites but not definites are permitted in TCs.
 
-% TODO: the literature understands "referent" = "index"
-% TODO: the literature understands novelty as of indexes
-% TODO: change guns to has a hat
-%
-% \begin{lemma}\label{lem:referent}
-% 	An expletive \textit{there} context introduces an entity to the discourse.
-% \end{lemma}
-% \begin{argument}
-% 	First, note that this is an immediate corollary to \citet[p.~105]{mcnallySemanticsEnglishExistential1997}'s central tenet---that the postverbal DP denotes the entity correlate of a property with the copulative \textit{be} denoting the property of being instantiated. To her, the core assertion of a TC like (\ref{ex:mcnally-be(cat)}) is essentially \(\text{be}_{\text{exist}}(\text{cat})\). Then, this entails the introduction of a variable \(y\) such that \(g(y) \in \text{cat}\) (where \(g\) is the assignment function). Note that \(\exists y . cat(y)\)\footnote{I use dot-notation (\(.\)) throughout to denote quantifier scope in attempts to avoid exessive bracketing and support readability.} would indeed be a necessary and sufficient condition for (\ref{ex:mcnally-be(cat)}) (\cite[p.~106]{mcnallyInterpretationEnglishExistential1992}), even if it is not, strictly speaking, the ``meaning.''
-% 
-% 	\begin{exe}
-% 		\ex {There is a cat in the room}\label{ex:mcnally-be(cat)}
-% 	\end{exe}
-% 
-% 	However, we do not have to rely on McNally's argumentation to see the lemma must hold as I argue below.
-% 
-% 	\textsc{Existential Quantification.} Variable introduction is perhaps self-evident given classical interpretation of TCs translating (\ref{ex:if-cake}) into (\ref{ex:sem:if-cake}). Given that a free variable \(x\) in a sentence \(\phi\) of classical predicate logic prevents \(\phi\) from having well-defined, model-independent truth conditions---in particular, leaving open the possibility of malformedness if the model assigns no value to \(x\)---it is natural to understand binding quantifiers like \(\exists x\) as introducing variables.
-% 
-% 	% TODO: indefinite could be existential
-% 	\begin{exe}
-% 		\ex {\begin{xlist}
-% 				\ex {There is a cat_i in the room. (It_i meows.)}\label{ex:if-cake}
-% 				\ex {\(\exists x . \text{cat}\,x \land \text{in-the-room}\,x\)}\label{ex:sem:if-cake}
-% 			\end{xlist}}
-% 	\end{exe}
-% 
-% 	Subtle care should be taken it is slightly ambiguous as to whether the indefinite \textit{a cat} or the TC itself (i.e. \textit{there}, \textit{be}, or their combination) strictly introduces the variable.
-% 
-% 	\textsc{Other Determiners.} However, such straightforward translation is tenuous with many other felicitous determiners, especially proportionals like \textit{most}. This said, there is still an ``existential flavor'' to (\ref{ex:most}) in the sense that we are presented with \textit{most students} and told that they were in the auditorium.
-% 
-% 	\begin{exe}
-% 		\ex {There were most sudents in the auditorium.}\label{ex:most}
-% 	\end{exe}
-% 
-% 	\textsc{Context.} Put in a context, the referent introduction of TCs stands out: Say we are in the conspicuously cat-less garden. Should I spot a cat and wish to share it with you, (\ref{ex:there's-a-cat}) is a perfectly fine thing to say and certainly does introduce the cat referent to the discourse. The complete unremarkability of (\ref{ex:there's-a-cat}) in this pragmatic use is in fact remarkable against the fact that TCs are generally otherwise somewhat stunted and formal expressions.
-% 
-% 	\begin{exe}
-% 		\ex {There's a cat. (It_i has a color.)}\label{ex:there's-a-cat}
-% 	\end{exe}
-% 
-% 	% TODO: Need to be careful about pragmatics...
-% 	On the flip side, (\ref{ex:lap-cat}) is rather odd in a context whereby we are surrounded by cats such that, by Gricean Quantity, introducing a cat referent is pragmatically vacuous.
-% 
-% 	\begin{exe}
-% 		\ex {There's a cat on your lap.}\label{ex:lap-cat}
-% 	\end{exe}
-% 
-% 	\textsc{Negation.} Slight care should be taken with respect to negated TCs (\ref{ex:neg}). This, of course, entails that no such referent exists (\ref{ex:sem:neg}). I think we can in fact take this as positive evidence for discourse introduction of the TC itself: observe that the appropriate truth conditions (or ones directly entailed anyhow) explicitly negate the introduction of a referent; since this negation is clearly provided by the morphological \textit{n't}, the negated introduction must be a property of the TC itself.
-% 
-% 	\begin{exe}
-% 		\ex {\begin{xlist}
-% 				\ex {There wasn't a sound.\hfill(\cite{mcnallySemanticsEnglishExistential1997}, ex. 192)}\label{ex:neg}
-% 				\ex {\(\lnot \exists x . \text{sound}(x) \equiv \forall x . \lnot \text{sound}(x)\)}\label{ex:sem:neg}
-% 			\end{xlist}}
-% 	\end{exe}
-% \end{argument}
-% 
-% \begin{lemma}\label{lem:novel}
-%   Expletive \textit{there} contexts require a novel variable.
-% \end{lemma}
-% \begin{argument}
-% 	\textsc{Anti-Familiarity.} We may observe following \citet{heimSemanticsDefiniteIndefinite1982} that definites have a familiarity condition which may rather minimally contrast definites from indefinites (\ref{ex:familiarity}). This thus requires TCs' anti-definiteness to be \textit{because} of a conflict with this familiarity condition. That is, TCs are anti-familiar. Or rather, novel.
-% 
-% 	\begin{exe}
-% 		\ex {A cat_i is in the garden. John likes the cat_i, and Mary hates a cat_j.\\
-% 			(*i=j)\hfill(Adapted from \cite{heimSemanticsDefiniteIndefinite1982}, p. 101, ex. 13)}\label{ex:familiarity}
-% 	\end{exe}
-% 
-% 	I will take up further the exact nature of the relationship between novelty and familiarity in the next section. For now, note that the logic goes: (i) Definites are familiar/anti-novel. (ii) Indefinites are novel/anti-familiar. (iii) Definites and indefinites are identical except with respect to novelty/familiarity. (iv) Indefinites, but not definites, are allowed in construction \(R\). (v) Thus, \(R\) conflicts with the familiarity of definites. (vi) Therefore, \(R\) is anti-familiar. (vii) Novelty is at least as strong a condition as anti-familiarity. (viii) \textit{Ceteris paribus}, a stronger condition is more falsifiable. (ix) Metatheoretically, \textit{ceteris paribus}, more falsifiable theories are preferable. (x) Hence, the stronger of two conditions is prefered. (xi) This means (vii) entails that novelty is prefered over anti-familiarity. (xii) Then, we strengthen (vi) to the statement that \(R\) is novel. (xiii) That is, it is a valid rule of inference that, if construction \(R\) allows indefinites but not definites, then \(R\) is novel. (xiv) TCs allow indefinites but not definites, therefore TCs are novel by (xiii).
-% 
-% 	\textsc{Novelty in \textsl{there}.} It seems reasonable to attribute this novelty to \textit{there} as, beyond copulative expletive \textit{there} sentences, verbal expletive \textit{there} sentences disallow definites and seem to have a novelty effect by the above argumentation as they allow indefinites but not definties. Moreover, the first class \textit{arrive}, \textit{exists}, \textit{begin}, etc. are rather directly presenting the new DP into the discourse; but even stationary verbals \textit{stood}, \textit{hang}, etc. have a very ``stage presentation'' air about them.
-% 
-% 	\begin{exe}
-% 		\ex {\begin{xlist}
-% 				\ex {There is a/*the man at the door.}
-% 				\ex {There arrived a/*the man at the door.}
-% 				\ex {There stood a/*the man at the door.}
-% 				\ex {There walked a/*the man to the door.}
-% 			\end{xlist}}
-% 	\end{exe}
-% 
-% 	Finally, two indirect arguments providing some weak evidence:
-% 
-% 	\textsc{Context.} Let us return to being surrounded by cats. Another way to view the pragmatic failure of the attempted discourse introduction is that whatever cat it is meant to introduce is certainly not novel, thus the crashing of Gricean Quantity indicates novelty within the original utterance of \textit{There's a cat on your lap}.
-% 
-% 	\textsc{Sufficiency.} As for the converse of the lemma, \textit{a priori}, it is clear that discourse introduction is a necessary condition for novelty: one cannot be new without being introduced.
-% \end{argument}
+Let me round off by suggesting we wrap novelty into \textit{there} as suggested by McNally: Beyond copulative expletive \textit{there} sentences, verbal expletive \textit{there} sentences disallow definites and seem to have a novelty effect as they allow indefinites but not definties (\cite{milsarkExistentialSentencesEnglish1974}). Moreover, the first class \textit{arrive}, \textit{exists}, \textit{begin}, etc. are rather directly presenting the new DP into the discourse; but even stationary verbals \textit{stood}, \textit{hang}, etc. have a very ``stage presentation'' air about them. See too how the final remark of (\ref{ex:thereless-existential-be}) along with (\ref{ex:creature}) and (\ref{ex:let-it-be}) arguably contain that \textit{be} of compulative TCs but are without \textit{there} and seem to permit definites and pronouns. This is all expected if \textit{there} carries TC novelty.
+
+\begin{exe}
+	\ex {\begin{xlist}
+			\ex {There is a/*the man at the door.}
+			\ex {There arrived a/*the man at the door.}
+			\ex {There stood a/*the man at the door.}
+			\ex {There walked a/*the man to the door.}
+		\end{xlist}}
+	\ex {A: Apparently they found a new ruined-city, do you know it? \\
+		B: I know of it, but I don't know it. \\
+		A: What do you know of it? \\
+		B: Mostly that it is.}\label{ex:thereless-existential-be}
+	\ex {I don't know man, the creature just is.}\label{ex:creature}
+	\ex {Let it be.}\label{ex:let-it-be}
+\end{exe}
 
 
 \section{Anti-Indefiniteness and Familiarity}

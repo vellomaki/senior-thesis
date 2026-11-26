@@ -3,6 +3,7 @@
 *.bbl
 *.bcf
 *.blg
+*.synctex(busy)
 *.fdb_latexmk
 *.fls
 *.log
