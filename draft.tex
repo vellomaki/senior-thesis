@@ -35,11 +35,15 @@ natbib
 \usepackage{amssymb}
 \usepackage{mathtools}
 \usepackage{stmaryrd}
-%\usepackage{bbold}
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+\usetikzlibrary{calc}
+\usetikzlibrary{graphs}
 
 \usepackage{amsthm}
 \newtheorem{theorem}{Theorem}
 \newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
 
 \newenvironment{argument}[1][]%
   {\par\medskip\noindent\textbf{\textit{Argument. #1}}}
@@ -58,6 +62,7 @@ natbib
 
 \newcommand{\ok}{\checkmark}
 \DeclareMathOperator{\bbexists}{\exists\mskip-7mu\exists}
+\DeclareMathOperator{\dom}{dom}
 
 
 \title{Expletive \textit{There} Relative Clauses and Novelty}
@@ -99,7 +104,7 @@ This anti-indefiniteness is particularly striking against the well-known (anti-)
 
 I claim that TRCs' anti-indefiniteness is simply a product of conflicting novelty requirements between the head determiner and the TC. Meanwhile, definites and universals do not have novelty conditions and thus do not conflict.
 
-Finally, and important to the analysis I consider (what I believe to be) novel evidence with regards to the extent of novelty and familiarity: First, (\ref{ex:det-projection}) is unacceptable when the cat in question would be completely novel. This will motivate particular definitions for familiarity and novelty of definites and TCs respectively. Specifically, I claim TCs exhibit index-novelty in the sense of \citet{heimSemanticsDefiniteIndefinite1982} while definites' familiarity considers (merely) actual entities (coupled with a uniqueness check).
+Finally, and important to the analysis, I consider (what I believe to be) novel evidence with regards to the extent of novelty and familiarity: First, (\ref{ex:det-projection}) is unacceptable when the cat in question would be completely novel. This will motivate particular definitions for familiarity and novelty of definites and TCs respectively. Specifically, I claim TCs exhibit index-novelty\footnote{I understand the literature to typically consider ``(discourse) referent'' to mean ``variable'' or ``index'' (such that the \(x\) of \(\exists x \phi\) is a ``referent''). I find this terminology strange and inviting confusion so avoid it in preference for ``variable'' and ``index.'' Likewise, I unambiguously say that that entity involved with a ``referent'' is the ``referred entity'' and similar periphrastics, or sometimes just ``entity.''} in the sense of \citet{heimSemanticsDefiniteIndefinite1982} while definites' familiarity considers (merely) actual entities (coupled with a uniqueness check).
 
 \begin{exe}
 	\ex[\#] {The cat there is here has a hat.}\label{ex:det-projection}
@@ -111,44 +116,152 @@ Second, (\ref{ex:definite-tc}) can be made acceptable without resorting to a so-
 	\ex[\ok] {There is the cat there was here (now) in the office.}\label{ex:definite-tc}
 \end{exe}
 
-\subsection{Non-Issue: Amounts}
-As syntactically qualified, some TRCs admit amount readings wherein (\ref{ex:amount}) most saliently reads (\ref{ex:amount:head}):
+
+\section{Formalism}\label{sec:formalism}
+I will present an analysis making use of dynamic semantics along the lines of \citet{groenendijkDynamicPredicateLogic1991}'s Dynamic Predicate Logic (DPL). Since I wish to establish how the formalism works in each case, I will preface with its introduction; waffling about its details can be found in \S\ref{sec:wafflings}. This said, much of the argument can be made without reference to formalism.
+
+\subsection{Preliminaries}
+\citet{mcnallySemanticsEnglishExistential1997} presents a dynamic semantics of TCs whereby discourse referent/variable introduction is closer to a presupposition. She analyzes the core assertion of TCs to be that a property \(be_{exist}\) of the postcopular DP (i.e. \textit{cat} in the running examples) is that it has a nonempty extension. Of course, this is the case if and only if there exists a referent \(y\) such that \(y\) is in said extension. Then, she argues, novelty is provided by \textit{there} in the form \(y \not\in D(c)\) where \(D(c)\) is the domain of entities in the context. Finally, if I am reading her analysis of the coda correctly, the domain of discourse \(D(c)\) has been sufficiently updated by the coda to align with how we have considered index-novelty to be constrained above.
+
+While I do not at this time wish to adopt McNally's entire analysis, I will run with a few points:
+\begin{enumerate}[label=(\roman*)]
+	\item TCs introduce an index to the contextual domain of discourse \(D(c)\)
+	\item TCs minimally entail \(\exists x \in D(c) \cup \{x\} [X(x) \land P(x)]\) where \(X\) is the interpretation of the coda (e.g. \textit{in the garden}) and \(P\) is the interpretation of the postcopular sortal (e.g. \textit{cat}).
+	\item A TC updates the contextual domain of discourse \(D(c)\) so as to familiarize all \(X\) in \(D(c)\) by the time the process reaches novelty/\textit{there}.
+	\item Novelty is understood as the condition \(x \not\in D(c)\) (equivalently \(x \not\in D(c') \cap X\) in the presence of a coda, where \(c'\) is the context before interpreting the TC).
+\end{enumerate}
+
+To my knowledge, the syntactic-semantic analysis of relative clauses is a bit of an open problem with regards to whether or not the head noun should reconstruct into the RC (see, e.g., \cite{bhattRaisingAnalysisRelative2002, cinqueSyntaxRelativeClauses2020} for discussion). For simplicity and concreteness, I will assume reconstruction, though the semantics should be workable for a variety of non-reconstructive analyses.
+
+
+\subsection{Dynamic Predicate Logic}
+I largely follow the dynamic predicate logic (DPL) of \citet{groenendijkDynamicPredicateLogic1991} (henceforth G\&S). In the goal of brevity and readability, I will identify a predicate \(R\) with its interpretation \(F(R)\); likewise \(F(t) = t\) for constants \(t\). I will further abbreviate \(\langle \llbracket t \rrbracket_g \rangle = \llbracket t \rrbracket_g\). Finally, I often skip over a number of obvious steps in derivations and omit a great many brackets and parentheses.
+
+Let us define images and pre-images as usual: given a (possibly partial) function \(f : X \to Y\) (treating \(f\) as the underlying relation \(xfy\) on \(X\) and \(Y\) here), the \textit{image} of a set \(A \subseteq X\) under \(f\) is
+\[f(A) \coloneqq \{y | \exists x \in X . xfy\},\]
+meanwhile, the \textit{pre-image} of \(B \subseteq Y\) by \(f\) is
+\[f^{-1}(B) \coloneqq \{x | \exists y \in B . xfy\}.\]
+The \textit{range} of \(f\) is \(f(X)\) and the \textit{domain} of \(f\) is \(\dom(f) \coloneqq f^{-1}(Y)\)
+
+Finally, I define the novelty \(\nu x\) and familiarity \(! x\) predicate-tests:
 
 \begin{exe}
-	\ex {There isn't the water in the sink that there is in the bathtub.\\
-		\null\hfill(Lisa Selkirk, p.c. to Irene Heim; so cited in \cite{vonfintelAmountRelativesMeaning1999})}\label{ex:amount}
-	\ex {There isn't the amount of water in the sink that there is in the bathtub.}\label{ex:amount:head}
+	\ex {\(\alpha\llbracket\nu x\rrbracket\beta \coloneqq (\forall y . y \in \dom \alpha \to \alpha(y) = \beta(y)) \land x \not\in \dom \alpha\) \\
+		(\(\alpha\) does not assign a value to \(x\))}
+	\ex {\(\alpha\llbracket! x\rrbracket\beta \coloneqq \alpha = \beta \land \beta(x) \in \alpha(\Sigma \setminus \{x\})\)\\
+		(the entity \(\beta(x)\) is referred to by some other variable \(y \neq x\))}
 \end{exe}
 
-I will pointedly ignore these cases\footnote{I will also briefly remark that \citet{carlsonAmountRelatives1977}'s two diagnostics other than anti-indefiniteness are a relativizer restriction (\textit{that}, null; never \textit{wh}-forms) and anti-stacking facts (TRCs may not stack with intersective import). I ignore them as beyond the present scope and as I indpendently have tentative reason to believe something more complicated is going on.} as (i) I believe individually-read TRCs should be schismed from amount relative analyses (see, ongoing senior thesis) and (ii) out of an abundance of caution for what exactly might be going on in amount readings (see \cite{mendiaAmountRelativesRedux2017} for a thorough examination of RCs with amount readings in English and Spanish). In a sense, this essay and the greater thesis present a position against necessarily lumping TRCs with amount RCs in order to get the anti-indefiniteness, as has been historically appealed to (\cite{carlsonAmountRelatives1977, heimWhereDoesDefiniteness1987, grosuStrangeRelativesThird1998, grosuAmountRelatives2017}).
 
 \section{TCs, Novelty, and Anti-Definiteness}\label{sec:tc-novelty}
-To briefly recount, TCs are anti-definite in the sense that they exclude many definite and universal determiners while permiting many indefinite determiners. While accounts of these facts are about as wide-spread as theories of syntax-semantics, I will adopt some key points from \citet{mcnallySemanticsEnglishExistential1997}\footnote{This is a slightly updated version of her \citeyear{mcnallyInterpretationEnglishExistential1992} dissertation (\cite{mcnallyInterpretationEnglishExistential1992}).}, especially her consideration of TC-novelty and variable introduction.\footnote{I understand the literature to typically consider ``(discourse) referent'' to mean ``variable'' or ``index'' (such that the \(x\) of \(\exists x \phi\) is a ``referent''). I find this terminology strange and inviting confusion so avoid it in preference for ``variable'' and ``index.'' Likewise, I unambiguously say that that entity involved with a ``referent'' is the ``referred entity'' and similar periphrastics, or sometimes just ``entity.''}
+To briefly recount, TCs are anti-definite in the sense that they exclude many definite and universal determiners while permiting many indefinite determiners. While accounts of these facts are about as wide-spread as theories of syntax-semantics, I will adopt some key points from \citet{mcnallySemanticsEnglishExistential1997}\footnote{This is a slightly updated version of her \citeyear{mcnallyInterpretationEnglishExistential1992} dissertation (\cite{mcnallyInterpretationEnglishExistential1992}).}, especially her consideration of TC-novelty and variable introduction.
 
 \begin{exe}
 	\ex {There is a/some/*the/*that/*every cat at the door.}
 	\ex {There are two/most/many/few/*all students in this class.}
 \end{exe}
 
-Our account of the definite-indefinite contrast above will be essentially that of \citet{mcnallySemanticsEnglishExistential1997} (among others) that TCs have a novelty condition which conflicts with the familiarity requirements of definites while being perfectly compatible with the novelty of indefinites (see \cite{heimSemanticsDefiniteIndefinite1982} for discussion of novelty and familiarity). Specifically, again following McNally and Heim, I will take up an index-based novelty filter/test to the effect of (\ref{rl:tc-novelty}) (though we will need to update this later to account for the coda).
+Our account of the definite-indefinite contrast above will be essentially that of \citet{mcnallySemanticsEnglishExistential1997} (among others) that TCs have a novelty condition which conflicts with the familiarity requirements of definites while being perfectly compatible with the novelty of indefinites (see \cite{heimSemanticsDefiniteIndefinite1982} for discussion of novelty and familiarity). Specifically, again following McNally and Heim, I take up an index-based novelty filter/test to the effect of (\ref{rl:tc-novelty}).
 
 \begin{exe}
 	\ex {\textit{TC-Novelty:} The index \(i\) of the postcopula DP position must not be part of the contextual domain of discourse \(D(c)\): \(i \not\in D(c)\).}\label{rl:tc-novelty}
 \end{exe}
 
-This rather directly relates to \citet[p.~100]{heimSemanticsDefiniteIndefinite1982}'s Novelty Condition on indefinites that the index of an indefinite must be ``novel'' (not on any DP to its left) on the basis of data like (\ref{ex:indef-novelty}). Thus, TCs naturally permit indefinites.
+This directly corresponds to the conjunct \(i \not\in \dom \alpha\) of \(\nu i\) (the rest being effectively assignment-identity between input and output). Also, this rather directly relates to \citet[p.~100]{heimSemanticsDefiniteIndefinite1982}'s Novelty Condition on indefinites that the index of an indefinite must be ``novel'' (not on any DP to its left) on the basis of data like (\ref{ex:indef-novelty}). Thus, TCs naturally permit indefinites.
 
 \begin{exe}
 	\ex {A cat_i is in the garden. John likes the cat_i, and Mary hates a cat_j.\\
 		(*i=j)\hfill(Adapted from \cite[p.~101, ex.~13]{heimSemanticsDefiniteIndefinite1982})}\label{ex:indef-novelty}
 \end{exe}
+
+I will actually follow the traditional interpretation of indefinites in DPL as \(\exists u\). Not to get into waffling, but we can consider this to mean indefinites don't formally care about getting a novel index, just that whatever may be at that index doesn't matter.\footnote{This is a non-issue if one adopts \(\nu x = \exists x\); see \S\ref{sec:wafflings}.} An example of the assignment update-process for a TC is given in Figure~\ref{fig:tc}.\footnote{I use fraktur characters \(\mathfrak{x}, \mathfrak{y}, \mathfrak{z}, \ldots \in D\) etc. to indicate entities. I use \(\lightning\) to indicate \(g \in \mathcal{G}\) failing the given test. \(g\) without a mapping superscript for a given index \(v\) may be assumed to be undefined for \(v\). Further, see \S\ref{sec:assignments} for why \(g\) fails the rightmost update in Figure~\ref{fig:tc}; I will hereafter ignore such trivial \(g\) from demonstrations.}
+
+
+\begin{figure}[ht]
+	\centering
+	\begin{tikzpicture}[xscale=2,yscale=.9]
+		\node (input-u) at (0,0) {\(g^{u\,\mapsto\,\mathfrak{x}}\)};
+		\node (input-u-abs) at (1,0) {\(\lightning\)};
+		\draw[->] (input-u) --  (input-u-abs);
+
+		\node (input) at (0,-1.5) {\(g\)};
+		\node (input-label) at (0,-4) {Input \(g \in \mathcal{G}\)};
+
+		\node (input-novel) at (1,-1) {\(g\)};
+		\node (X) at (1,-2) {\(g^{u\,\mapsto\,\mathfrak{x}}\)};
+		\node (Y) at (1,-3){\(g^{u\,\mapsto\,\mathfrak{y}}\)};
+		\draw[->] (input) -- (input-novel);
+		\draw[->] (input) -- (X);
+		\draw[->] (input) -- (Y);
+		\node (novel) at (1,-4) {\(\exists u\)};
+
+		\node (input-exist) at (2,0) {\(g\)};
+		\node (EX) at (2,-1) {\(g^{u\,\mapsto\,\mathfrak{x}}\)};
+		\node (EY) at (2,-2) {\(g^{u\,\mapsto\,\mathfrak{y}}\)};
+		\node (E-abs) at (2,-3) {\(\lightning\)};
+		\draw[->] (input-novel) -- (EX);
+		\draw[->] (input-novel) -- (EY);
+		\draw[->] (input-novel) -- (input-exist);
+		\draw[->] (X) -- (E-abs);
+		\draw[->] (Y) -- (E-abs);
+		%\draw[->] (X) -- (EX);
+		%\draw[->] (X) -- (EY);
+		%\draw[->] (X) -- (input-exist);
+		%\draw[->] (Y) -- (EX);
+		%\draw[->] (Y) -- (EY);
+		%\draw[->] (Y) -- (input-exist);
+		\node (exist) at (2,-4) {\(\nu u\)};
+
+		\node (input-abs) at (3,0) {\(\lightning\)};
+		\node (A-abs) at (3,-1) {\(\lightning\)};
+		\node (B'') at (3, -2) {\(g^{u\,\mapsto\,\mathfrak{y}}\)};
+		\draw[->] (input-exist) -- (input-abs);
+		\draw[->] (EX) -- (A-abs);
+		\draw[->] (EY) -- (B'');
+		\node at (3,-4) {\(\text{cat}\,u \cdot \text{here}\, u\)};
+	\end{tikzpicture}
+	\caption{There is a cat here.}
+	\label{fig:tc}
+\end{figure}
+
+
 % Note that the logic goes: (i) Definites are familiar/anti-novel. (ii) Indefinites are novel/anti-familiar. (iii) Definites and indefinites are identical except with respect to novelty/familiarity. (iv) Indefinites, but not definites, are allowed in construction \(R\). (v) Thus, \(R\) conflicts with the familiarity of definites. (vi) Therefore, \(R\) is anti-familiar. (vii) Novelty is at least as strong a condition as anti-familiarity. (viii) \textit{Ceteris paribus}, a stronger condition is more falsifiable. (ix) Metatheoretically, \textit{ceteris paribus}, more falsifiable theories are preferable. (x) Hence, the stronger of two conditions is prefered. (xi) This means (vii) entails that novelty is prefered over anti-familiarity. (xii) Then, we strengthen (vi) to the statement that \(R\) is novel. (xiii) That is, it is a valid rule of inference that, if construction \(R\) allows indefinites but not definites, then \(R\) is novel. (xiv) TCs allow indefinites but not definites, therefore TCs are novel by (xiii).
 
-Meanwhile, again with Heim, definites have a familiarity condition. This minimally entails (\ref{rl:index-familiartiy}) (I show in \S\ref{sec:formalism} this is actually vacuous at the level of property interpretation and thus take up a different understanding of familiarity). Thus, TCs cannot (generally) take definite DPs. Ergo, the anti-definiteness effect observed.
+Meanwhile, again with Heim, definites have a familiarity condition. This minimally entails (\ref{rl:index-familiartiy}) (I show in \S\ref{sec:assignments} this is actually vacuous at the level of property interpretation and thus take up a different understanding of familiarity). Thus, TCs cannot (generally) take definite DPs. Ergo, the anti-definiteness effect observed.
 
 \begin{exe}
 	\ex {\textit{Index-Familiarity:} The index \(i\) of a definite DP must be part of the contextual domain of discourse \(D(c)\): \(i \in D(c)\).}\label{rl:index-familiartiy}
 \end{exe}
+
+An example demonstration of this is given in Figure~\ref{fig:tc-def}. A snag here is that we need the order \(\nu x \cdot \text{cat},x\) due to how \(\nu\) interacts with definedness constraints inherent to properties (\S\ref{sec:assignments}), but the logic outlined for outlawing definites in TCs requires \(\nu x\) no earlier than \(!x\), otherwise definite TCs are effectively equivalent to anaphoric definites. This may be desirable on account of felicitous definite TCs (see \cite{abbottDefinitenessExistentials1997}).
+% TODO: Abbott section
+
+\begin{figure}[ht]
+	\centering
+	\begin{tikzpicture}[xscale=2]
+		\node (no-else-input) at (0,2) {\(g^{u\,\mapsto\,\mathfrak{x}}\)};
+		\node (no-else-familiar) at (1,2) {\(\lightning\mathrlap{\lnot \exists v \neq u . g(v) = g(u)}\)};
+		\draw[->] (no-else-input) -- (no-else-familiar);
+
+		\node (unfamiliar-input) at (0,1) {\(g^{v\,\mapsto\,\mathfrak{x}}\)};
+		\node (unfamiliar-familiar) at (1,1) {\(\lightning\)\rlap{\(g(u)\) undefined (see \S\ref{sec:assignments})}};
+		\draw[->] (unfamiliar-input) -- (unfamiliar-familiar);
+
+		\node (input) at (0,0) {\(g^{\substack{v\,\mapsto\,\mathfrak{x}\\u\,\mapsto\,\mathfrak{x}}}\)};
+		\node (familiar) at (1,0) {\(g^{\substack{v\,\mapsto\,\mathfrak{x}\\u\,\mapsto\,\mathfrak{x}}}\)};
+		\node (novel) at (2,0) {\(\lightning\)\rlap{\(g(u)\) defined}};
+		\draw[->] (input) -- (familiar);
+		\draw[->] (familiar) -- (novel);
+
+		\node (label-input) at (0, -1) {Input \(g \in \mathcal{G}\)};
+		\node (label-familiar) at (1, -1) {\(! u\)};
+		\node (label-novel) at (2, -1) {\(\nu u\)};
+	\end{tikzpicture}
+
+	\caption{*There is the cat here.}
+	\label{fig:tc-def}
+\end{figure}
+
 
 \subsection{Discourse Introduction and the Function of TCs}\label{sec:discourse-introduction}
 I wish to not-so-briefly remark on the discourse introduction properties of TCs; though with exception to a final piece of evidence, its frankly derivative of much of the literature. The astute reader following along with their own judgements will observe that TCs are generally stunted and formal expressions. However, they need not be; in fact, they are at their most natural when introducing what I think are indices to the discourse. Under the context (\ref{context:catless-garden}), (\ref{ex:introducing-cat}) is completely unremarkable and properly introduce the cat (or at least its existence).
@@ -330,33 +443,63 @@ Our account noted in \S\ref{sec:recall} of the felicity of definites with TRCs i
 
 In the next section I will sketch a formalism to the facts within a dynamic semantics. We conclude in \S\ref{sec:determiners} by accounting for the other determiner selections then some final remarks in \S\ref{sec:mysteries} on further problems.
 
-\section{Formalism}\label{sec:formalism}
-I will present an analysis making use of dynamic semantics along the lines of \citet{groenendijkDynamicPredicateLogic1991}'s Dynamic Predicate Logic (DPL). The key idea is that we interpret definites' familiarity as a post-supposition with respect to entities.
+\section{Other Determiners}\label{sec:determiners}
 
 
-\subsection{Preliminaries}
-\citet{mcnallySemanticsEnglishExistential1997} present a dynamic semantics of TCs whereby discourse referent/variable introduction is (merely/strongly) a presupposition. She analyzes the core assertion of TCs to be that a property \(be_{exist}\) of the postcopular DP (i.e. \textit{man} in the running examples) is that it has a nonempty extension. Of course, this is the case if and only if there exists a referent \(y\) such that \(y\) is in said extension. Then, she argues, novelty is provided by \textit{there} in the form \(y \not\in D(c)\) where \(D(c)\) is the domain of entities in the context. Finally, if I am reading her analysis of the coda correctly, the domain of discourse \(D(c)\) has been sufficiently updated by the coda to align with how we have considered TC-novelty to apply above.
+\section{Wafflings on the Formalism}\label{sec:wafflings}
+\subsection{Assignment Functions}\label{sec:assignments}
+Note that assignment functions are well-defined in G\&L whereas I allow them to be merely partial, i.e. having being undefined on some \(v \in \Sigma\). This is because index-novelty of \(v\) is defined such \(v\) is not in the domain \(\dom(g)\) of the input \(g\) in systems like Heim's and McNally's. G\&L handle index-novelty in a destructive manner via. random resets \(g[x]h\). Precise formal-theory distinction between partial and well-defined \(g\) comes down to a bunch of waffling as I see it.\footnote{We can also throw into the ring here assignment to empty individuals ``\(v \mapsto \varepsilon\)'' as an alternative to ``\(g(v)\) undefined.'' But then we have to juggle \(\varepsilon\) around in the rest of the logic. Note further we have to distinguish \(\varepsilon\) being a formal entity \(\varepsilon \in D\) vs. merely a possible assignment \(g : \Sigma \to D \cup \{\varepsilon\}\) (\(g\) well-defined).}
 
-While I do not at this time wish to adopt McNally's entire analysis, I will run with a few points:
-\begin{enumerate}[label=(\roman*)]
-	\item TCs introduce an index to the contextual domain of discourse \(D(c)\)
-	\item TCs minimally entail \(\exists x \in D(c) \cup \{x\} [X(x) \land P(x)]\) where \(X\) is the interpretation of the coda (e.g. \textit{in the garden}) and \(P\) is the interpretation of the postcopular sortal (e.g. \textit{cat}).
-	\item A TC updates the contextual domain of discourse \(D(c)\) so as to familiarize all \(X\) in \(D(c)\) by the time the process reaches novelty/\textit{there}.
-	\item Novelty is understood as the condition \(x \not\in D(c)\) (equivalently \(x \not\in D(c') \cap X\) in the presence of a coda, where \(c'\) is the context before interpreting the TC).
-\end{enumerate}
-
-To my knowledge, the syntactic-semantic analysis of relative clauses is a bit of an open problem with regards to whether or not the head noun should reconstruct into the RC (see, e.g., \cite{bhattRaisingAnalysisRelative2002, cinqueSyntaxRelativeClauses2020} for discussion). For simplicity and concreteness, I will assume reconstruction, though the semantics should be workable for a variety of non-reconstructive analyses.
+Metatheoretically, following Heimian index-familiarity accounts of definiteness, \(i \in \dom(g)\) is vacuous if \(\dom(g) = \Sigma\) (of course, I argue this is vacuous anyway given treatment of relating variables to properties via assignment functions). Meanwhile, index-novelty as \(g[x]h\) is destructive on the value of \(x\),\footnote{I can neither prove nor disprove such; I am simply not comfortable enough in the metatheoretic philosophy behind DPL. \(\nu\) might be equatable with \(\exists\) in DPL, but one must be careful that Heim's indefinites-facts hold.} which seems to just shift the issue to index assignment; this may be desirable.
 
 
-\subsection{Dynamic Predicate Logic}
-I roughly follow the dynamic predicate logic (DPL) outlined \citet{nouwenDynamicSemantics2022} and \citet{groenendijkDynamicPredicateLogic1991} with a slight caveat, I assume with McNally that calculations make reference to only the \textit{relevant} domain of individuals \(D^\alpha\) rather than the entire domain. Let \(D\) be an arbitrary set/the domain of individuals, with \(D^* \coloneqq \bigcup_{i \in \mathbb{N}} D^i\) (\(A^0 \coloneqq \{\emptyset\}\)); \(I^n\) be the set of \(n\)-ary predicates (\(n \in \mathbb{N}\))\footnote{Here, I consider constants to be nullary predicates.}; \(F : I^* \to D^*\) an (predicate) interpretation function such that \(F(I^0) \subseteq D\) and \(F(I^n) \subseteq \mathcal{P}(D^n)\)\footnote{Where \(\mathcal{P}(A)\) denotes the power set of a set \(A\).} (\(n \ge 1\)), though I will often just identify a predicate \(P\) with its mapping \(F(P)\) under \(F\); \(\Sigma\) be an arbitrary set/the set of variables; and, \(\mathcal{G} : \Sigma \to D\), I will often abbreviate \(\langle g(t_{1}), \dots, g(t_n)\rangle = g(\vec{t})\) for some \(g \in \mathcal{G}\). Define a model \(\mathcal{M} = \langle D, F \rangle\) and a (formula) interpretation function \(\llbracket \cdot \rrbracket_M \subseteq \mathcal{G} \times \mathcal{G}\) (suppressing the subscript where unambiguous; see \cite{groenendijkDynamicPredicateLogic1991} for details) which I often write in relation-notation \(\alpha\llbracket\cdot\rrbracket\beta\) following \citeauthor{nouwenDynamicSemantics2022}. Further, \(\alpha \models \phi \coloneqq \exists \beta . \alpha\llbracket\phi\rrbracket\beta\)\footnote{I will use dot notation (\(.\)) to quantifier scope to avoid excesses of brackets. I also ellide a great many parenthesis where appropriate scope is clear.} defines truth of \(\phi\) relative to \(\alpha \in \mathcal{G}\) (and model \(\mathcal{M}\)).
+\subsection{Vacuity of Index-Familiarity}
+I have repeatedly made mention to the fact that index-familiarity of the form \(i \in \dom g\) is vacuous given variables and predicates being mediated by \(g\). I prove this in the following theorem, but let me first note the definition of a partial function: a \textit{partial function} \(f : X \to Y\) is a relation between \(X\) and \(Y\) such that \(xfy \land xfz \to y = z\). \(f\) is said to \textit{undefined} on \(x \in X\) if and only if \(\lnot \exists y . xfy\). Finally, equality and function application: \(\exists y . xfy \to f(x) = y\) (by definition, this \(y\) is unique).
 
-We can define the relevant domain of individuals
-\[D^\alpha = \alpha(\Sigma) \coloneqq \{x \in D | \exists s \in \Sigma . \alpha(s) = x\}.\]
+\begin{theorem}
+	Given a partial function \(f : X \to Y\) undefined on \(x \in X\) and a set \(A \subseteq Y\), \(f(x) \not\in A\).
+\end{theorem}
+\begin{proof}
+	As given, \(f\) is undefined on \(x\). That is, \(\lnot \exists y . fxy\). By definition of equality and function application then, \(\lnot \exists y . f(x) = y\).
 
-Finally, I define the novelty predicate \(\alpha\llbracket\nu x\rrbracket\beta \coloneqq \alpha[x]\beta \land \beta(x) \not\in D^\alpha\). I will address familiarity in \S\ref{sec:familiarity}.
+	By way of contradiction, assume \(f(x) \in A\). Therefore,
+	\[f(x) \in A \implies \exists y . f(x) = y \land y \in A\]
+	by existential introduction. In particular,
+	\[\exists y . f(x) = y \land y \in A \implies \exists y . f(x) = y.\]
+	However, it is given that \(\lnot \exists y . f(x) = y\). Thus, we have a contradiction. Hence, \(f(x) \not\in A\).
+\end{proof}
 
-\subsubsection{Interpreting TC Novelty}
+One can easily extend this result as appropriate to \(A \subseteq Y^n\) by induction, however I only use and thus only state the base case. An immediate corollary considers explicit assertions of well-formedness:
+
+\begin{corollary}
+	Given a partial function \(f : X \to Y\) and set \(A \subseteq Y\),
+	\[x \in \dom f \land f(x) \in A \equiv f(x) \in A.\]
+\end{corollary}
+\begin{proof}
+	Observe that \(x \not\in \dom f\) if and only if \(f\) is undefined on \(x\). Thus, by the theorem, if \(x \not\in \dom f\), then \(f(x) \not\in A\). By the contrapositive, if \(f(x) \in A\), then \(x \in \dom f\). Since the first conjunct is materially implicated by the second, it is vacuous. That is,
+	\(x \in \dom f \land f(x) \in A \equiv f(x) \in A\).
+\end{proof}
+
+We may then immediately put this corollary in the context of DPL:
+
+\begin{corollary}
+	Given a partial assignment function \(g : \Sigma \to D\) and a 1-place predicate \(R\),
+	\[i \in \dom g \land g(x) \in R \equiv g(x) \in R.\]
+\end{corollary}
+
+That is, \(i \in \dom g\) is vacuous given predicate interpretation with variables \(\llbracket R x \rrbracket\) is mediated by an assignment function. So while we could define familiarity \(!x\) to conjoin with \(i \in \dom g\), that is immediately vacuous as soon as that assignment \(g(i)\) is actually called upon. Even a minimal utterance \textit{Her_i.} isn't merely asserting \(i \in \dom g\). This brings us to our definition of entity-based familiarity.
+
+\subsection{Entity-Based Familiarity}
+Our definition of familiarity \(g\llbracket ! x\rrbracket h \coloneqq g = h \land h(x) \in g(\Sigma \setminus \{x\})\) is odd coming from the Heimian index-familiarity tradition. I reason that this is the appropriate understanding of familiarity in DPL. (i) As seen in the previous section, Heimian \(i \in \dom g\) is largely vacuous, so we do need a new account of familiarity, or else ellide it from the formal language. I also point out that (ii) entity-familiarity (though not quite this form) is implied by Heimian index-familiarity: if a phrase has a familiar index, then it must be referred to a familiar entity---i.e. that entity referred by the familiar index. Finally, this is almost exactly the position of anaphoric definites such as outlined by \citet{lawWeNeedTwo2025}: a definite noun phrase is assigned itsown index \(u\) and is interpreted as a composition of index instantiation \(\exists u\), anaphoric reference \(u = v\) to another index \(v\), and a uniqueness check \(1_u\) on \(u\) as in (\ref{ex:law-def-interpretation}).
+
+\begin{exe}
+	\ex {\(\llbracket \text{\(\text{the}_v^u\) student}\rrbracket = \lambda P. 1_u (\exists u \cdot u = v \cdot S u) \cdot P u\)}\label{ex:law-def-interpretation}
+\end{exe}
+
+My entity-familiarity \(! u\) is largely equivalent to \(\exists u \cdot u = v\) just without explicit instantiation nor an anaphoric index---for any \(v\), \(u = v\) by virtue of incidental coreference, effectively shifting the role of anaphoric index assignment to the calculation of the space of assignment functions \(\mathcal{G}\). This said, I will maintain the present approach as it more cleanly handles the interaction of novelty and familiarity in TRCs. Were that definites \textit{the^u_v} inherently introduced an independent variable related by anaphora, we would be stuck explaining how the definite \textit{the^u_{v,w}} of TRCs is simultaneously anaphoric to the RC content (held by \(w\)) and whatever other index \(v\) supports the entity-familiarity.
+
+
+\subsection{Interpreting TC Novelty}
 It should be clear from our above discussion that the appropriate interpretation, with respect to an assignment function \(g \in \mathcal{G}\), of TCs with novelty to be equivalent to
 \begin{exe}
 	\ex {\(\exists x . g(x) \not\in D(c) \cap X \land X(g(x)) \land P(g(x)),\)}\label{sem:tc-novelty}
@@ -379,7 +522,7 @@ where \(D(c)\) is the contextual domain. This is equivalent to
 
 It should be clear that this is equivalent to () once converted back to classical logic, where \(D(c) = g(\Sigma)\).
 
-\subsubsection{Familiarity}\label{sec:familiarity}
+\subsection{Familiarity}\label{sec:familiarity}
 One should recall from \S\ref{sec:recall} that the TC in (\ref{ex:blue:intro}) cannot introduce a completely novel referent, but (\ref{ex:blue:trc}) can recall that referent \(B\). How is this supposed to work? I previously claimed that \(B\) is unfamiliar but in the common ground in (\ref{ex:blue:trc}) thereby licensing the reference. Let me make that sense more precise.
 
 \begin{itemize}
@@ -397,9 +540,19 @@ Now, we define familiarity with respect to \(\mathcal{H}\) as so:
 \[\alpha\llbracket!x\rrbracket\beta \coloneqq \exists \gamma \in \mathcal{H} . \beta(x) \in D^\gamma \cup D^\alpha.\]
 
 
-\section{Other Determiners}\label{sec:determiners}
-
 \section{Further Mysteries}\label{sec:mysteries}
+\subsection{Non-Issue: Amounts}
+As syntactically qualified, some TRCs admit amount readings wherein (\ref{ex:amount}) most saliently reads (\ref{ex:amount:head}):
+
+\begin{exe}
+	\ex {There isn't the water in the sink that there is in the bathtub.\\
+		\null\hfill(Lisa Selkirk, p.c. to Irene Heim; so cited in \cite{vonfintelAmountRelativesMeaning1999})}\label{ex:amount}
+	\ex {There isn't the amount of water in the sink that there is in the bathtub.}\label{ex:amount:head}
+\end{exe}
+
+I will pointedly ignore these cases\footnote{I will also briefly remark that \citet{carlsonAmountRelatives1977}'s two diagnostics other than anti-indefiniteness are a relativizer restriction (\textit{that}, null; never \textit{wh}-forms) and anti-stacking facts (TRCs may not stack with intersective import). I ignore them as beyond the present scope and as I indpendently have tentative reason to believe something more complicated is going on.} as (i) I believe individually-read TRCs should be schismed from amount relative analyses (see, ongoing senior thesis) and (ii) out of an abundance of caution for what exactly might be going on in amount readings (see \cite{mendiaAmountRelativesRedux2017} for a thorough examination of RCs with amount readings in English and Spanish). In a sense, this essay and the greater thesis present a position against necessarily lumping TRCs with amount RCs in order to get the anti-indefiniteness, as has been historically appealed to (\cite{carlsonAmountRelatives1977, heimWhereDoesDefiniteness1987, grosuStrangeRelativesThird1998, grosuAmountRelatives2017}).
+
+
 
 Copula reduction (TRCs, questions)
 
