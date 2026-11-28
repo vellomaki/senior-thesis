@@ -233,10 +233,9 @@ Meanwhile, again with Heim, definites have a familiarity condition. This minimal
 	\ex {\textit{Index-Familiarity:} The index \(i\) of a definite DP must be part of the contextual domain of discourse \(D(c)\): \(i \in D(c)\).}\label{rl:index-familiartiy}
 \end{exe}
 
-An example demonstration of this is given in Figure~\ref{fig:tc-def}. A snag here is that we need the order \(\nu x \cdot \text{cat},x\) due to how \(\nu\) interacts with definedness constraints inherent to properties (\S\ref{sec:assignments}), but the logic outlined for outlawing definites in TCs requires \(\nu x\) no earlier than \(!x\), otherwise definite TCs are effectively equivalent to anaphoric definites.\footnote{This may alternatively be broachable with a thorough compositional analysis allowing the intersection of \(\nu x\) and \(!x\).} This may be desirable on account of select felicitous definite TCs (see \cite{abbottDefinitenessExistentials1997}). Regardless, such unexpected ordering will not be an issue with the main point of TRCs.
-% TODO: Abbott section
+An example demonstration of this is given in Figure~\ref{fig:tc-def}. A snag here is that we need the order \(\nu x \cdot \text{cat},x\) due to how \(\nu\) interacts with definedness constraints inherent to properties (\S\ref{sec:assignments}), but the logic outlined for outlawing definites in TCs requires \(\nu x\) no earlier than \(!x\), otherwise definite TCs are effectively equivalent to anaphoric definites.\footnote{This may alternatively be broachable with a thorough compositional analysis allowing the intersection of \(\nu x\) and \(!x\).} This may be desirable on account of select felicitous definite TCs (see \S\ref{sec:abbott}). Regardless, such unexpected ordering will not be an issue with the main point of TRCs.
 
-\begin{figure}[ht]
+\begin{figure}[htb]
 	\centering
 	\begin{tikzpicture}[xscale=2,yscale=.8]
 		\node (no-else-input) at (0,2) {\(g^{u\,\mapsto\,\mathfrak{x}}\)};
@@ -278,7 +277,19 @@ Of course, any claim of discourse introduction seems open to counterexamples via
 	\ex {\(\lnot \exists x . \text{sound}\,x\)}
 \end{exe}
 
-We should be somewhat careful as to whether TCs themselves (i.e. \textit{there}, \textit{be}, or a combination) induce any introduction or if it's simply the well-licensed indefinite. However, playing agnostic to any entity introduction, we see below that index-novelty is maintained in those selectively felicitous definites:
+Finally, adapting a recent experience of mine: I have just arrived home and spot a car I don't recognize in the driveway. It wasn't there when I left, but my dad has been home all day so he should know. (A) I walk inside, where my dad presumably isn't thinking about cars parked outside, and ask (\ref{ex:car:there}); (\ref{ex:car:question}) is odd. Or, (B) before I get inside, my dad comes out to the trash, which happens to be right next to the driveway, suddenly I can only ask (\ref{ex:car:question}) and not (\ref{ex:car:there}).\footnote{Actually, I was \textit{planning} to ask my dad these questions. And, on second judgement, the unacceptability of (\ref{ex:car:question}) in (B) is not very strong; but the judgements were very strong in the moment.}
+
+\begin{exe}
+	\ex {Who's car is there in the driveway? (\ok A, *B)}\label{ex:car:there}
+	\ex {Who's car is in the driveway? (??B, \ok A)}\label{ex:car:question}
+\end{exe}
+
+We see here the direct influence of changing salience, with no change to actual knowledge, completely shifting acceptability of TCs. This is cleanly analyzed assuming index-novelty of TCs: In (A), the car \(C\) is in common knowledge \(g^{* \,\mapsto\,C}\), but not the common ground; in particular, there is no discourse indexical assigned to \(C\).\footnote{The precise handling of this requires an understanding of how context and knowledge interacts with assignment functions---an issue well beyond the present scope. For the time, we will model this as an ambiguous mapping \(g^{*\,\mapsto\,C}\) such that \textit{some} \(v\) refers to \(C\), but it is unknown which one. This is the philosophy of the argument.} The TC of (\ref{ex:car:there}) properly provides an index \(g^{*\,\mapsto\,C, u\,\mapsto\,C}\) which passes novelty and anaphoric reference to \(C\) is supported. However, the definiteness associated with the possessive in (\ref{ex:car:question}) seems to have difficulty in providing such a novel index. Do note that the familiarity of the definite possessive of (\ref{ex:car:there}) will be supported by the TC's novelty in the manner of TRCs (see the following section). Finally, the mere marginality of (\ref{ex:car:question}) in (B) suggests the indexation involved in \textit{wh}-questions might help support the definite possessive's familiarity, though the sheer contrast of especially (\ref{ex:car:there}) between (A) and (B) is the important data of the present argument.
+
+Meanwhile, in (B), the salience of \(C\) being right next to both me and my dad would place it in the common ground with an indexical \(g^{v\,\mapsto\,C}\). Thus, (\ref{ex:car:there}) fails novelty and familiarity in (\ref{ex:car:question}) is well-supported.
+
+\subsubsection{Challenges by Abbott}\label{sec:abbott}
+We should be somewhat careful as to whether TCs themselves (i.e. \textit{there}, \textit{be}, or a combination) induce any introduction or if it's simply the well-licensed indefinite. However, playing agnostic to any entity introduction, we see below that index-novelty is maintained in those selectively felicitous definites.
 
 Rather strongly challenging the idea that the \textit{only} function of TCs is entity introduction, \citet{abbottDefinitenessExistentials1997} illustrates a few examples employing deictics and definites plainly appearing in TCs:
 
@@ -296,7 +307,7 @@ Rather strongly challenging the idea that the \textit{only} function of TCs is e
 
 These strongly indicate that TCs cannot categorically assert (even just hearer-) novelty of the referred entity/situation. However, I do not think they pose a problem for index-novelty: in each case the TC seems to ``take up'' the entity for discussion. Care must be taken with deictics and pronouns, themselves being inherently familiar indices; I will posit that we equate the index of the anaphor with that supplied by the TC \textit{but only through their referred entities}. Thus, the variable involved is new, even while the entity is old. Such is demonstrated in Figure~\ref{fig:felicitous-def-tc}.
 
-\begin{figure}
+\begin{figure}[htb]
 	\centering
 	\begin{tikzpicture}[xscale=2,yscale=.8]
 		\node (no-alt-input) at (0,1) {\(g\)};
@@ -330,16 +341,6 @@ These strongly indicate that TCs cannot categorically assert (even just hearer-)
 	\label{fig:felicitous-def-tc}
 \end{figure}
 
-Finally, adapting a recent experience of mine: I have just arrived home and spot a car I don't recognize in the driveway. It wasn't there when I left, but my dad has been home all day so he should know. (A) I walk inside, where my dad presumably isn't thinking about cars parked outside, and ask (\ref{ex:car:there}); (\ref{ex:car:question}) is odd. Or, (B) before I get inside, my dad comes out to the trash, which happens to be right next to the driveway, suddenly I can only ask (\ref{ex:car:question}) and not (\ref{ex:car:there}).\footnote{Actually, I was \textit{planning} to ask my dad these questions. And, on second judgement, the unacceptability of (\ref{ex:car:question}) in (B) is not very strong; but the judgements were very strong in the moment.}
-
-\begin{exe}
-	\ex {Who's car is there in the driveway? (\ok A, *B)}\label{ex:car:there}
-	\ex {Who's car is in the driveway? (??B, \ok A)}\label{ex:car:question}
-\end{exe}
-
-We see here the direct influence of changing salience, with no change to actual knowledge, completely shifting acceptability of TCs. This is cleanly analyzed assuming index-novelty of TCs: In (A), the car \(C\) is in common knowledge \(g^{* \,\mapsto\,C}\), but not the common ground; in particular, there is no discourse indexical assigned to \(C\).\footnote{The precise handling of this requires an understanding of how context and knowledge interacts with assignment functions---an issue well beyond the present scope. For the time, we will model this as an ambiguous mapping \(g^{*\,\mapsto\,C}\) such that \textit{some} \(v\) refers to \(C\), but it is unknown which one. This is the philosophy of the argument.} The TC of (\ref{ex:car:there}) properly provides an index \(g^{*\,\mapsto\,C, u\,\mapsto\,C}\) which passes novelty and anaphoric reference to \(C\) is supported. However, the definiteness associated with the possessive in (\ref{ex:car:question}) seems to have difficulty in providing such a novel index. Do note that the familiarity of the definite possessive of (\ref{ex:car:there}) will be supported by the TC's novelty in the manner of TRCs (see the following section). Finally, the mere marginality of (\ref{ex:car:question}) in (B) suggests the indexation involved in \textit{wh}-questions might help support the definite possessive's familiarity, though the sheer contrast of especially (\ref{ex:car:there}) between (A) and (B) is the important data of the present argument.
-
-Meanwhile, in (B), the salience of \(C\) being right next to both me and my dad would place it in the common ground with an indexical \(g^{v\,\mapsto\,C}\). Thus, (\ref{ex:car:there}) fails novelty and familiarity in (\ref{ex:car:question}) is well-supported.
 
 \subsection{The Role of \textit{There}}
 Let me round off by suggesting we wrap novelty into \textit{there} as suggested by McNally: Beyond copulative expletive \textit{there} sentences, verbal expletive \textit{there} sentences disallow definites and seem to have a novelty effect as they allow indefinites but not definties (\cite{milsarkExistentialSentencesEnglish1974}). Moreover, the first class \textit{arrive}, \textit{exists}, \textit{begin}, etc. are rather directly presenting the new DP into the discourse; but even stationary verbals \textit{stood}, \textit{hang}, etc. have a very ``stage presentation'' air about them. See too how the final remark of (\ref{ex:thereless-existential-be}) along with (\ref{ex:creature}) and (\ref{ex:let-it-be}) arguably contain that \textit{be} of compulative TCs but are without \textit{there} and seem to permit definites and pronouns. This is all expected if \textit{there} carries TC novelty.
